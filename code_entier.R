@@ -53,6 +53,18 @@ moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,transpiration_type,moisture)
 ggplot(data,aes(x=species,y=moisture,fill=transpiration_type))+geom_boxplot()
 
+species = rep(c(treemoist.dat$species))
+transpiration_type = rep(c("Rapid","Slow"))
+moisture = rep(c(treemoist.dat$moisture))
+data = data.frame(species,transpiration_type,moisture)
+ggplot(data,aes(x=transpiration_type,y=moisture,fill=species))+geom_boxplot()
+
+species = rep(c(treemoist.dat$species))
+branches = rep(c("1","2","3","4","5"))
+moisture = rep(c(treemoist.dat$moisture))
+data = data.frame(species,branches,moisture)
+ggplot(data,aes(x=species,y=moisture,fill=branches))+geom_boxplot()
+
 #INTERACTION PLOTS
 layout(matrix(1:2,ncol=1))
 interaction.plot(treemoist.dat$species, treemoist.dat$branches, treemoist.dat$moisture)
