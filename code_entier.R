@@ -67,12 +67,13 @@ ggplot(data,aes(x=species,y=moisture,fill=branches))+geom_boxplot()
 
 #INTERACTION PLOTS
 layout(matrix(1:6,ncol=3))
-interaction.plot(treemoist.dat$species, treemoist.dat$branches, treemoist.dat$moisture,trace.label="branches",xlab = "species",ylab="mean of moisture")
-interaction.plot(treemoist.dat$species, treemoist.dat$location, treemoist.dat$moisture)
-interaction.plot(treemoist.dat$species, treemoist.dat$transpiration, treemoist.dat$moisture)
-interaction.plot(treemoist.dat$branches, treemoist.dat$location, treemoist.dat$moisture)
-interaction.plot(treemoist.dat$branches, treemoist.dat$transpiration, treemoist.dat$moisture)
-interaction.plot(treemoist.dat$location, treemoist.dat$transpiration, treemoist.dat$moisture)
+interaction.plot(treemoist.dat$species, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "species",ylab="mean of moisture")
+interaction.plot(treemoist.dat$species, treemoist.dat$location, treemoist.dat$moisture, trace.label="location",xlab = "species",ylab="mean of moisture")
+interaction.plot(treemoist.dat$species, treemoist.dat$transpiration, treemoist.dat$moisture, trace.label="transpiration",xlab = "species",ylab="mean of moisture")
+interaction.plot(treemoist.dat$location, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "location",ylab="mean of moisture")
+interaction.plot(treemoist.dat$transpiration, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "transpiration",ylab="mean of moisture")
+interaction.plot(treemoist.dat$transpiration, treemoist.dat$location, treemoist.dat$moisture, trace.label="location",xlab = "transpiration",ylab="mean of moisture")
+
 
 #ANOVA
 tree <- aov(moisture ~ species + branches + location + transpiration + species:transpiration
