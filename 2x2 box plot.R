@@ -1,6 +1,7 @@
-# V5 est la réponse, V1,V2,V3,V4 sont les facteurs
+#BOXPLOTS
+# moisture est la réponse, branches sont les facteurs
 layout(matrix(1:4,ncol=2))
-boxplot(V5 ~ V1,data=treemoist)
-boxplot(V5 ~ V2,data=treemoist)
-boxplot(V5 ~ V3,data=treemoist)
-boxplot(V5 ~ V4,data=treemoist)
+boxplot(moisture ~ species, data = treemoist.dat)
+boxplot(moisture ~ branches, data = treemoist.dat)
+boxplot(moisture ~ location, data = treemoist.dat)
+boxplot(moisture ~ transpiration, data = treemoist.dat)
