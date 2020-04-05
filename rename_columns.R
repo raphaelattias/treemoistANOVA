@@ -1,5 +1,0 @@
-> names(treemoist.dat)[names(treemoist.dat) == "V1"] <- "species"
-> names(treemoist.dat)[names(treemoist.dat) == "V2"] <- "branches"
-> names(treemoist.dat)[names(treemoist.dat) == "V3"] <- "location"
-> names(treemoist.dat)[names(treemoist.dat) == "V4"] <- "transpiration"
-> names(treemoist.dat)[names(treemoist.dat) == "V5"] <- "moisture"
