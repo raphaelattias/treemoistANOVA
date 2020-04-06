@@ -32,7 +32,7 @@ library("car")
 qqPlot(treemoist.dat$moisture)
 
 #BOXPLOTS
-#moisture est la réponse, branches sont les facteurs
+# moisture est la réponse, branches sont les facteurs
 layout(matrix(1:4,ncol=2))
 boxplot(moisture ~ species, data = treemoist.dat)
 boxplot(moisture ~ branches, data = treemoist.dat)
@@ -45,19 +45,25 @@ species = rep(c(treemoist.dat$species))
 location = rep(c("Central","Distal","Proximal"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,location,moisture)
-ggplot(data,aes(x=species,y=moisture,fill=location))+geom_boxplot()
+ggplot(data,aes(x=species,y=moisture,fill=location))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
+                                                                                    legend.box.just = "right",
+                                                                                    legend.margin = margin(6, 6, 6, 6))
 
 species = rep(c(treemoist.dat$species))
 transpiration_type = rep(c("Rapid","Slow"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,transpiration_type,moisture)
-ggplot(data,aes(x=species,y=moisture,fill=transpiration_type))+geom_boxplot()
+ggplot(data,aes(x=species,y=moisture,fill=transpiration_type))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
+                                                                                    legend.box.just = "right",
+                                                                                    legend.margin = margin(6, 6, 6, 6))
 
 species = rep(c(treemoist.dat$species))
 transpiration_type = rep(c("Rapid","Slow"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,transpiration_type,moisture)
-ggplot(data,aes(x=transpiration_type,y=moisture,fill=species))+geom_boxplot()
+ggplot(data,aes(x=transpiration_type,y=moisture,fill=species))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
+                                                                                    legend.box.just = "right",
+                                                                                    legend.margin = margin(6, 6, 6, 6))
 
 species = rep(c(treemoist.dat$species))
 branches = rep(c("1","2","3","4","5"))
