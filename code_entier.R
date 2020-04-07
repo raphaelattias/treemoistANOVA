@@ -45,25 +45,22 @@ species = rep(c(treemoist.dat$species))
 location = rep(c("Central","Distal","Proximal"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,location,moisture)
-ggplot(data,aes(x=species,y=moisture,fill=location))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
-                                                                                    legend.box.just = "right",
-                                                                                    legend.margin = margin(6, 6, 6, 6))
+ggplot(data,aes(x=species,y=moisture,fill=location))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"), legend.box.just = "right",legend.margin = margin(6, 6, 6, 6),
+                                                                          axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))
 
 species = rep(c(treemoist.dat$species))
 transpiration_type = rep(c("Rapid","Slow"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,transpiration_type,moisture)
-ggplot(data,aes(x=species,y=moisture,fill=transpiration_type))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
-                                                                                    legend.box.just = "right",
-                                                                                    legend.margin = margin(6, 6, 6, 6))
+ggplot(data,aes(x=species,y=moisture,fill=transpiration_type))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"), legend.box.just = "right",legend.margin = margin(6, 6, 6, 6),
+                                                                                    axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))
 
 species = rep(c(treemoist.dat$species))
 transpiration_type = rep(c("Rapid","Slow"))
 moisture = rep(c(treemoist.dat$moisture))
 data = data.frame(species,transpiration_type,moisture)
-ggplot(data,aes(x=transpiration_type,y=moisture,fill=species))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"),
-                                                                                    legend.box.just = "right",
-                                                                                    legend.margin = margin(6, 6, 6, 6))
+ggplot(data,aes(x=transpiration_type,y=moisture,fill=species))+geom_boxplot()+theme(legend.position = c(0.95, .95),legend.justification = c("right", "top"), legend.box.just = "right",legend.margin = margin(6, 6, 6, 6),
+                                                                                    axis.text=element_text(size=18),axis.title=element_text(size=14,face="bold"))
 
 species = rep(c(treemoist.dat$species))
 branches = rep(c("1","2","3","4","5"))
@@ -74,11 +71,44 @@ ggplot(data,aes(x=species,y=moisture,fill=branches))+geom_boxplot()
 #INTERACTION PLOTS
 layout(matrix(1:6,ncol=3))
 interaction.plot(treemoist.dat$species, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "species",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = species, y = moisture, colour = branches, group=branches)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))+
+  scale_colour_continuous(guide = guide_legend(direction = "horizontal", title.position = "left", label.position="bottom", label.hjust = 0.5, label.vjust = 0.5))
+
 interaction.plot(treemoist.dat$species, treemoist.dat$location, treemoist.dat$moisture, trace.label="location",xlab = "species",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = species, y = moisture, colour = location, group=location)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))
+
 interaction.plot(treemoist.dat$species, treemoist.dat$transpiration, treemoist.dat$moisture, trace.label="transpiration",xlab = "species",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = species, y = moisture, colour = transpiration, group=transpiration)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))
+
 interaction.plot(treemoist.dat$location, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "location",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = location, y = moisture, colour = branches, group=branches)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))+
+  scale_colour_continuous(guide = guide_legend(direction = "horizontal", title.position = "left", label.position="bottom", label.hjust = 0.5, label.vjust = 0.5))
+
 interaction.plot(treemoist.dat$transpiration, treemoist.dat$branches, treemoist.dat$moisture, trace.label="branches",xlab = "transpiration",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = transpiration, y = moisture, colour = branches, group=branches)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))+
+  scale_colour_continuous(guide = guide_legend(direction = "horizontal", title.position = "left", label.position="bottom", label.hjust = 0.5, label.vjust = 0.5))
+
 interaction.plot(treemoist.dat$transpiration, treemoist.dat$location, treemoist.dat$moisture, trace.label="location",xlab = "transpiration",ylab="mean of moisture")
+ggplot(data = treemoist.dat,
+       aes(x = species, y = moisture, colour = location, group=location)) +
+  stat_summary(fun.y=mean, geom="point")+
+  stat_summary(fun.y=mean, geom="line")+ylab("mean of moisture")+theme(legend.position = "top", axis.text=element_text(size=14),axis.title=element_text(size=14,face="bold"))
+
 
 
 #ANOVA
